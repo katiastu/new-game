@@ -44,13 +44,16 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `, [myTiles.transparency16], TileScale.Sixteen);
             case "level1":
-            case "level1":return tiles.createTilemap(hex`1e000500020202020202020202020202020202020202020202020202020202020202040505050505050505050505050505050505050505050505050505050503040605050505050505050505050505050505050505050505050505050503040505050505050505050505050505050505050505050505050505050503010505050505050505050505050505050505050505050505050505050501`, img`
+            case "level1":return tiles.createTilemap(hex`1e000800020202020202020202020202020202020202020202020202020202020202040505050505050505050505050505050505050505050505050505050503040605050505050505050505050505050505050505050505050505050503040505050505050505050505050505050505050505050505050505050503010505050505050505050505050505050505050505050505050505050503040505050505050505050505050505050505050505050505050505050503040505050505050505050505050505050505050505050505050505050703010101010101010101010101010101010101010101010101010101010101`, img`
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
 2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
-`, [myTiles.transparency16,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterNorth1,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.floorLightMoss,sprites.castle.rock0], TileScale.Sixteen);
+2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`, [myTiles.transparency16,sprites.dungeon.greenOuterSouth0,sprites.dungeon.greenOuterNorth1,sprites.dungeon.greenOuterEast0,sprites.dungeon.greenOuterWest1,sprites.dungeon.floorLightMoss,sprites.castle.rock0,sprites.castle.saplingOak], TileScale.Sixteen);
         }
         return null;
     })
