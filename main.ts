@@ -20,11 +20,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile.startEffect(effects.warmRadial)
 })
 function startNextLevel () {
+    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
+        value.destroy()
+    }
     currentLevel += 1
-    if (currentLevel == 0) {
+    if (currentLevel == 1) {
         tiles.setCurrentTilemap(tilemap`level1`)
-    } else if (false) {
-    	
+    } else if (currentLevel == 2) {
+        tiles.setCurrentTilemap(tilemap`level1`)
     } else {
         game.over(true)
     }
@@ -46,6 +49,7 @@ function startNextLevel () {
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Player)
+    tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
     controller.moveSprite(mySprite, 100, 100)
     mySprite.setStayInScreen(true)
     info.setLife(5)
@@ -55,9 +59,14 @@ info.onLifeZero(function () {
     mySprite.destroy(effects.ashes, 500)
     game.over(false)
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
+    startNextLevel()
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    otherSprite.destroy(effects.fire, 500)
+    otherSprite.destroy()
     info.changeScoreBy(1)
+    projectile.follow(Demon1)
+    null.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
