@@ -21,6 +21,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . e . . f f f f f f . . . . . 
         . . . . 1 f f . . f f . . . . . 
         `)
+    for (let index = 0; index < 5; index++) {
+        statusbar.value += -1
+    }
 })
 function bossFight () {
 	
@@ -205,6 +208,8 @@ function startNextLevel () {
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Player)
+    statusbar.setColor(7, 2)
+    statusbar.value = 5
     tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
     controller.moveSprite(mySprite, 100, 100)
     mySprite.setStayInScreen(true)
@@ -236,6 +241,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (spri
     mySprite.destroy()
     startNextLevel()
 })
+statusbars.onZero(StatusBarKind.Energy, function (status) {
+    NoEnegry()
+})
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(1)
@@ -248,10 +256,32 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         otherSprite.destroy(effects.ashes, 500)
     }
 })
+function NoEnegry () {
+    Shiel = 0
+    mySprite.setImage(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 5 5 5 5 . . . . . . 
+        . . . . 5 5 5 5 5 5 5 . . . . . 
+        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+        . . . d d d d d d d d d d . . . 
+        . . . d 5 5 d d d d 5 5 d . . . 
+        . . d d 6 6 d d d d 6 6 d d . . 
+        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
+        . . . . d 5 d d d d 5 d . . . . 
+        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
+        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
+        . . d b . 1 1 1 1 1 1 . b d . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
+        `)
+}
 let projectile2: Sprite = null
 let Demon1: Sprite = null
 let metPannochka = false
 let projectile: Sprite = null
+let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shiel = 0
 let currentLevel = 0
