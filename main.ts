@@ -4,21 +4,21 @@
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . b 5 b . . . 
-        . . . . . . . . . b 5 b . . . . 
-        . . . . . . b b b b b b . . . . 
-        . . . . . b b 5 5 5 5 5 b . . . 
-        . b b b b b 5 5 5 5 5 5 5 b . . 
-        . b d 5 b 5 5 5 5 5 5 5 5 b . . 
-        . . b 5 5 b 5 d 1 f 5 d 4 f . . 
-        . . b d 5 5 b 1 f f 5 4 4 c . . 
-        b b d b 5 5 5 d f b 4 4 4 4 4 b 
-        b d d c d 5 5 b 5 4 4 4 4 4 b . 
-        c d d d c c b 5 5 5 5 5 5 5 b . 
-        c b d d d d d 5 5 5 5 5 5 5 b . 
-        . c d d d d d d 5 5 5 5 5 d b . 
-        . . c b d d d d d 5 5 5 b b . . 
-        . . . c c c c c c c c b b . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 5 5 5 5 . . . . . . 
+        . . . . 5 5 5 5 5 5 5 . . . . . 
+        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+        . . . d d d d d d d d d d . . . 
+        . . . d 5 5 d d d d 5 5 d . . . 
+        . . e d 6 6 d d d d 6 6 d d . . 
+        . . e 3 3 d 5 5 5 5 d 3 3 . . . 
+        e e e e e 5 d d d d 5 d . . . . 
+        . . e 1 1 1 1 2 2 1 1 1 1 . . . 
+        . . e 1 1 1 1 2 2 1 1 1 1 1 . . 
+        . . e b . 1 1 1 1 1 1 . b d . . 
+        . . e . . f f f f f f . . . . . 
+        . . . . 1 f f . . f f . . . . . 
         `)
 })
 function bossFight () {
@@ -59,31 +59,8 @@ function startNextLevel () {
     } else if (currentLevel == 2) {
         tiles.setCurrentTilemap(tilemap`level1`)
     } else if (currentLevel == 3) {
-        tiles.setCurrentTilemap(tilemap`level3`)
         metPannochka = true
-        Pannochka.setStayInScreen(true)
-        Pannochka = sprites.create(img`
-            .....542242.....
-            ...522f2f25.....
-            ....4ff1ff4.....
-            .....f616f......
-            .....f111f......
-            .....ff1ff......
-            .....f121f......
-            ....1f121f1.....
-            ....1f111f1.....
-            ....1f111f1.....
-            ....1f111f1.....
-            ....1111111.....
-            ....1111111.....
-            .....11111......
-            .....11111......
-            .....11111......
-            .....11111......
-            .....1...1......
-            .....1...1......
-            ...111...111....
-            `, SpriteKind.Enemy)
+        tiles.setCurrentTilemap(tilemap`level3`)
     } else {
         game.over(true)
     }
@@ -93,12 +70,12 @@ function startNextLevel () {
         . . . . . . 5 5 5 5 . . . . . . 
         . . . . 5 5 5 5 5 5 5 . . . . . 
         . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
         . . . d d d d d d d d d d . . . 
         . . . d 5 5 d d d d 5 5 d . . . 
         . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d d d d d d 3 3 . . . 
-        . . . . d d d d d d d d . . . . 
+        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
+        . . . . d 5 d d d d 5 d . . . . 
         . . . 1 1 1 1 2 2 1 1 1 1 . . . 
         . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
         . . d b . 1 1 1 1 1 1 . b d . . 
@@ -118,12 +95,12 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
         . . . . . . 5 5 5 5 . . . . . . 
         . . . . 5 5 5 5 5 5 5 . . . . . 
         . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
         . . . d d d d d d d d d d . . . 
         . . . d 5 5 d d d d 5 5 d . . . 
         . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d d d d d d 3 3 . . . 
-        . . . . d d d d d d d d . . . . 
+        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
+        . . . . d 5 d d d d 5 d . . . . 
         . . . 1 1 1 1 2 2 1 1 1 1 . . . 
         . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
         . . d b . 1 1 1 1 1 1 . b d . . 
@@ -147,7 +124,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let projectile2: Sprite = null
 let Demon1: Sprite = null
-let Pannochka: Sprite = null
 let metPannochka = false
 let projectile: Sprite = null
 let mySprite: Sprite = null
@@ -277,6 +253,7 @@ scene.setBackgroundImage(img`
     `)
 game.onUpdateInterval(randint(1000, 5000), function () {
     if (metPannochka == true) {
+        let Pannochka: Sprite = null
         projectile2 = sprites.createProjectileFromSprite(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
