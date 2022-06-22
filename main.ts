@@ -27,22 +27,22 @@ function bossFight () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (currentLevel != 0) {
         projectile = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 4 4 . . . . . . . 
-            . . . . . . 4 5 5 4 . . . . . . 
-            . . . . . . 2 5 5 2 . . . . . . 
-            . . . . . . . 2 2 . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . . . . . b . . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . c d c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . b c c c d 5 d c c c b . . . 
+            . b d d 5 5 5 5 5 5 5 d d b . . 
+            . . b c c d d 5 d d c c b . . . 
+            . . . . . c d 5 d c . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . . d . . . . . . . . 
+            . . . . . . . b . . . . . . . . 
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
     } else {
@@ -255,22 +255,22 @@ game.onUpdateInterval(randint(1000, 5000), function () {
     if (metPannochka == true) {
         let Pannochka: Sprite = null
         projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . . . . . b . . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . c d c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . b c c c d 5 d c c c b . . . 
+            . b d d 5 5 5 5 5 5 5 d d b . . 
+            . . b c c d d 5 d d c c b . . . 
+            . . . . . c d 5 d c . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . . d . . . . . . . . 
+            . . . . . . . b . . . . . . . . 
             `, Pannochka, 50, 50)
     }
 })
