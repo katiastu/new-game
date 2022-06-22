@@ -1,11 +1,14 @@
 namespace SpriteKind {
     export const Button = SpriteKind.create()
     export const Cursor = SpriteKind.create()
+    export const Picture = SpriteKind.create()
 }
 /**
  * Enemies
  */
 function LevelControl () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Button)
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -346,6 +349,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function CreatePlayer () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -493,7 +497,8 @@ let Cursor: Sprite = null
 let Help_Button: Sprite = null
 let Play_Button: Sprite = null
 let currentLevel = 0
-Level1()
+currentLevel = 0
+LevelControl()
 game.onUpdateInterval(randint(1000, 5000), function () {
     if (metPannochka == true) {
         let Pannochka: Sprite = null
@@ -506,7 +511,4 @@ game.onUpdateInterval(1000, function () {
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
     }
-})
-forever(function () {
-    music.playMelody("C5 G B A F A C5 B ", 120)
 })
