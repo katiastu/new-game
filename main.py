@@ -4,7 +4,6 @@ namespace SpriteKind {
     export const Picture = SpriteKind.create()
 }
 function LevelControl () {
-    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Button)
     scene.setBackgroundImage(img`
@@ -342,12 +341,11 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . 1 f f . . f f . . . . . 
         `)
     for (let index = 0; index < 5; index++) {
+        let statusbar: StatusBarSprite = null
         statusbar.value += -1
     }
 })
 function CreatePlayer () {
-    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-    statusbar = statusbars.create(20, 4, StatusBarKind.Energy)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -457,13 +455,10 @@ statusbars.onZero(StatusBarKind.Energy, function (status) {
     NoEnegry()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (currentLevel == 3) {
-        mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
-    }
     otherSprite.destroy()
     info.changeScoreBy(1)
+    projectile.follow(Demon1)
     sprite.destroy(effects.fire, 500)
-    otherSprite.destroy(effects.fire, 500)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (Shiel == 0) {
@@ -492,11 +487,10 @@ function NoEnegry () {
         . . . . . f f . . f f . . . . . 
         `)
 }
-let Demon1: Sprite = null
 let projectile2: Sprite = null
+let Demon1: Sprite = null
 let metPannochka = false
 let projectile: Sprite = null
-let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shiel = 0
 let Cursor: Sprite = null
@@ -511,6 +505,9 @@ game.onUpdateInterval(randint(1000, 5000), function () {
         projectile2 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 50, 50)
     }
 })
+/**
+ * Enemies
+ */
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
