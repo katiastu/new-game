@@ -9,7 +9,8 @@
         "story": "github:riknoll/arcade-story#v1.3.1",
         "arcade-text": "github:pelikhan/arcade-image-text#v0.0.4",
         "animation": "*",
-        "block-menu": "github:riknoll/arcade-custom-menu#v0.0.1"
+        "block-menu": "github:riknoll/arcade-custom-menu#v0.0.1",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.1"
     },
     "files": [
         "main.blocks",
