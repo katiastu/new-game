@@ -1,3 +1,7 @@
+namespace SpriteKind {
+    export const Button = SpriteKind.create()
+    export const Cursor = SpriteKind.create()
+}
 /**
  * Enemies
  */
@@ -62,6 +66,12 @@ function Level3 () {
     tiles.setCurrentTilemap(tilemap`level3`)
     GameParameters()
 }
+sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Button, function (sprite, otherSprite) {
+    if (otherSprite == Play_Button && controller.A.isPressed()) {
+        currentLevel = 1
+        startNextLevel()
+    }
+})
 function Level1 () {
     tiles.setCurrentTilemap(tilemap`level1`)
     GameParameters()
@@ -189,8 +199,7 @@ function startNextLevel () {
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         `)
-    currentLevel += 1
-    if (currentLevel == 1) {
+    if (currentLevel == 0) {
         scene.setBackgroundImage(img`
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -313,29 +322,68 @@ function startNextLevel () {
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             `)
+        Play_Button = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 1 1 1 1 . 1 1 1 . . . 1 . . 1 
+            1 1 . 1 1 . 1 . 1 1 1 1 1 . . 1 
+            1 1 1 1 1 . 1 1 1 . 1 1 . . . 1 
+            1 1 . . 1 . 1 . 1 . . 1 . . . 1 
+            1 1 . . 1 1 1 . 1 . . 1 . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Button)
+        Help_Button = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . 1 . . 1 1 1 . 1 . . 1 1 1 1 
+            1 . 1 . 1 1 . . . 1 . . 1 . 1 1 
+            1 . 1 1 1 1 1 1 . 1 . . 1 1 1 1 
+            1 . 1 . 1 1 . . . 1 . . 1 . . 1 
+            1 . 1 . 1 1 1 1 . 1 1 . 1 . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 . . . . . . . . . . . . . . 1 
+            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.Button)
         Cursor = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 1 . . . . . . . . 
-            . . . . . . 1 1 1 . . . . . . . 
-            . . . . . 1 1 1 1 . . . . . . . 
-            . . . . . 1 1 1 1 1 . . . . . . 
-            . . . . 1 1 1 1 1 1 1 . . . . . 
-            . . . 1 1 1 1 1 1 1 1 . . . . . 
-            . . . 1 1 1 1 1 1 1 1 1 . . . . 
-            . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
-            . . . . . . 1 1 1 . . . . . . . 
-            . . . . . . 1 1 1 . . . . . . . 
-            . . . . . . 1 1 1 . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Player)
-    } else if (currentLevel == 2) {
+            . . . . . . . b . . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . c d c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . b c c c d 5 d c c c b . . . 
+            . b d d 5 5 5 5 5 5 5 d d b . . 
+            . . b c c d d 5 d d c c b . . . 
+            . . . . . c d 5 d c . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . c 5 c . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b 5 b . . . . . . . 
+            . . . . . . b d b . . . . . . . 
+            . . . . . . . d . . . . . . . . 
+            . . . . . . . b . . . . . . . . 
+            `, SpriteKind.Cursor)
+        Play_Button.setPosition(44, 93)
+        Help_Button.setPosition(110, 93)
+        controller.moveSprite(Cursor)
+    } else if (currentLevel == 0) {
         Level1()
-    } else if (currentLevel == 3) {
+    } else if (currentLevel == 0) {
         Level2()
-    } else if (currentLevel == 4) {
+    } else if (currentLevel == 0) {
         Level3()
     } else {
         game.over(true)
@@ -432,6 +480,8 @@ function NoEnegry () {
 let projectile2: Sprite = null
 let Demon1: Sprite = null
 let Cursor: Sprite = null
+let Help_Button: Sprite = null
+let Play_Button: Sprite = null
 let metPannochka = false
 let projectile: Sprite = null
 let statusbar: StatusBarSprite = null
