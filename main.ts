@@ -28,6 +28,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 function bossFight () {
 	
 }
+function Level2 () {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    GameParameters()
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (currentLevel != 0) {
         projectile = sprites.createProjectileFromSprite(img`
@@ -50,9 +54,18 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
     } else {
-        startNextLevel()
+    	
     }
 })
+function Level3 () {
+    metPannochka = true
+    tiles.setCurrentTilemap(tilemap`level3`)
+    GameParameters()
+}
+function Level1 () {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    GameParameters()
+}
 function startNextLevel () {
     scene.setBackgroundImage(img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -176,45 +189,16 @@ function startNextLevel () {
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         `)
-    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
-        value.destroy()
-    }
     currentLevel += 1
     if (currentLevel == 1) {
-        tiles.setCurrentTilemap(tilemap`level1`)
+        Level1()
     } else if (currentLevel == 2) {
-        tiles.setCurrentTilemap(tilemap`level1`)
+        Level2()
     } else if (currentLevel == 3) {
-        metPannochka = true
-        tiles.setCurrentTilemap(tilemap`level3`)
+        Level3()
     } else {
         game.over(true)
     }
-    mySprite = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . 5 5 5 5 5 5 5 . . . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-        . . . d d d d d d d d d d . . . 
-        . . . d 5 5 d d d d 5 5 d . . . 
-        . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
-        . . . . d 5 d d d d 5 d . . . . 
-        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
-        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
-        . . d b . 1 1 1 1 1 1 . b d . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Player)
-    statusbar.setColor(7, 2)
-    statusbar.value = 5
-    tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
-    controller.moveSprite(mySprite, 100, 100)
-    mySprite.setStayInScreen(true)
-    info.setLife(5)
-    scene.cameraFollowSprite(mySprite)
 }
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     Shiel = 0
@@ -241,6 +225,33 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (spri
     mySprite.destroy()
     startNextLevel()
 })
+function GameParameters () {
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 5 5 5 5 . . . . . . 
+        . . . . 5 5 5 5 5 5 5 . . . . . 
+        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+        . . . d d d d d d d d d d . . . 
+        . . . d 5 5 d d d d 5 5 d . . . 
+        . . d d 6 6 d d d d 6 6 d d . . 
+        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
+        . . . . d 5 d d d d 5 d . . . . 
+        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
+        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
+        . . d b . 1 1 1 1 1 1 . b d . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
+        `, SpriteKind.Player)
+    statusbar.setColor(7, 2)
+    statusbar.value = 5
+    tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
+    controller.moveSprite(mySprite, 100, 100)
+    mySprite.setStayInScreen(true)
+    info.setLife(5)
+    scene.cameraFollowSprite(mySprite)
+}
 statusbars.onZero(StatusBarKind.Energy, function (status) {
     NoEnegry()
 })
@@ -408,6 +419,7 @@ scene.setBackgroundImage(img`
     ......cccccccccccc.....cccccccccccccccccccccc....................cccccccccccccccccccccccccccccccccccccccc.............f.....................cccccccccc..........
     ......ccccccccccc.........ccccccccccccccccccc.........................................................................f.........................................
     `)
+startNextLevel()
 game.onUpdateInterval(randint(1000, 5000), function () {
     if (metPannochka == true) {
         let Pannochka: Sprite = null
