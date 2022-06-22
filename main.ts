@@ -308,14 +308,16 @@ function LevelControl () {
         Play_Button.setPosition(44, 93)
         Help_Button.setPosition(110, 93)
         controller.moveSprite(Cursor)
-    } else if (currentLevel == 0) {
+    } else if (currentLevel == 1) {
         Level1()
-    } else if (currentLevel == 0) {
+    } else if (currentLevel == 2) {
         Level2()
-    } else if (currentLevel == 0) {
+    } else if (currentLevel == 3) {
         Level3()
-    } else {
+    } else if (currentLevel < 4) {
         game.over(true)
+    } else {
+    	
     }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -367,14 +369,16 @@ function CreatePlayer () {
     mySprite.setStayInScreen(true)
     info.setLife(5)
     scene.cameraFollowSprite(mySprite)
-    lantern.startLanternEffect(mySprite)
-    lantern.setLightBandWidth(25)
+    if (currentLevel != 3) {
+        lantern.startLanternEffect(mySprite)
+        lantern.setLightBandWidth(25)
+    }
 }
 function bossFight () {
 	
 }
 function Level2 () {
-    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.setCurrentTilemap(tilemap`level2`)
     CreatePlayer()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -440,6 +444,7 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
     mySprite.destroy()
+    currentLevel += 1
     LevelControl()
 })
 statusbars.onZero(StatusBarKind.Energy, function (status) {
