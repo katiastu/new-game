@@ -384,22 +384,22 @@ function Level2 () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (currentLevel != 0) {
         projectile = sprites.createProjectileFromSprite(img`
-            . . . . . . . b . . . . . . . . 
-            . . . . . . b d b . . . . . . . 
-            . . . . . . c d c . . . . . . . 
-            . . . . . . c 5 c . . . . . . . 
-            . . . . . . c 5 c . . . . . . . 
-            . . b c c c d 5 d c c c b . . . 
-            . b d d 5 5 5 5 5 5 5 d d b . . 
-            . . b c c d d 5 d d c c b . . . 
-            . . . . . c d 5 d c . . . . . . 
-            . . . . . . c 5 c . . . . . . . 
-            . . . . . . c 5 c . . . . . . . 
-            . . . . . . b 5 b . . . . . . . 
-            . . . . . . b 5 b . . . . . . . 
-            . . . . . . b d b . . . . . . . 
-            . . . . . . . d . . . . . . . . 
-            . . . . . . . b . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 5 . . . . . . . . 
+            . . . . . . 5 e 5 . . . . . . . 
+            . . . . . . 5 e 5 . . . . . . . 
+            . . . . . 5 4 e 5 5 . . . . . . 
+            . . . 5 e e e e e e e 5 . . . . 
+            . . . . 5 5 5 e 5 5 4 . . . . . 
+            . . . . 2 4 5 e 5 4 2 . . . . . 
+            . . . . . . 5 e 5 . 2 . . . . . 
+            . . . . . 5 4 e 5 . . . . . . . 
+            . . . . . 4 5 e 5 4 . . . . . . 
+            . . . . . 4 5 e 5 4 . . . . . . 
+            . . . . 2 . 4 5 4 . . . . . . . 
+            . . . . . . 4 2 4 . 2 . . . . . 
+            . . . . . . . 2 . . . . . . . . 
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
     } else {
