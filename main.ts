@@ -1,3 +1,6 @@
+/**
+ * Enemies
+ */
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.setImage(img`
         . . . . . . . . . . . . . . . . 
@@ -19,55 +22,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         `)
 })
 function bossFight () {
-    tiles.setCurrentTilemap(tilemap`level3`)
-    Pannochka2 = sprites.create(img`
-        .....542242.....
-        ...522f2f25.....
-        ....4ff1ff4.....
-        .....f616f......
-        .....f111f......
-        .....ff1ff......
-        .....f121f......
-        ....1f121f1.....
-        ....1f111f1.....
-        ....1f111f1.....
-        ....1f111f1.....
-        ....1111111.....
-        ....1111111.....
-        .....11111......
-        .....11111......
-        .....11111......
-        .....11111......
-        .....1...1......
-        .....1...1......
-        ...111...111....
-        `, SpriteKind.Enemy)
-    Pannochka2 = sprites.create(img`
-        .....542242.....
-        ...522f2f25.....
-        ....4ff1ff4.....
-        .....f616f......
-        .....f111f......
-        .....ff1ff......
-        .....f121f......
-        ....1f121f1.....
-        ....1f111f1.....
-        ....1f111f1.....
-        ....1f111f1.....
-        ....1111111.....
-        ....1111111.....
-        .....11111......
-        .....11111......
-        .....11111......
-        .....11111......
-        .....1...1......
-        .....1...1......
-        ...111...111....
-        `, SpriteKind.Enemy)
-    metPannochka = true
+	
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (currentLevel == 1) {
+    if (currentLevel != 0) {
         projectile = sprites.createProjectileFromSprite(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -101,7 +59,31 @@ function startNextLevel () {
     } else if (currentLevel == 2) {
         tiles.setCurrentTilemap(tilemap`level1`)
     } else if (currentLevel == 3) {
-        bossFight()
+        tiles.setCurrentTilemap(tilemap`level3`)
+        metPannochka = true
+        Pannochka.setStayInScreen(true)
+        Pannochka = sprites.create(img`
+            .....542242.....
+            ...522f2f25.....
+            ....4ff1ff4.....
+            .....f616f......
+            .....f111f......
+            .....ff1ff......
+            .....f121f......
+            ....1f121f1.....
+            ....1f111f1.....
+            ....1f111f1.....
+            ....1f111f1.....
+            ....1111111.....
+            ....1111111.....
+            .....11111......
+            .....11111......
+            .....11111......
+            .....11111......
+            .....1...1......
+            .....1...1......
+            ...111...111....
+            `, SpriteKind.Enemy)
     } else {
         game.over(true)
     }
@@ -129,10 +111,6 @@ function startNextLevel () {
     info.setLife(5)
     scene.cameraFollowSprite(mySprite)
 }
-info.onLifeZero(function () {
-    mySprite.destroy(effects.ashes, 500)
-    game.over(false)
-})
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     mySprite.setImage(img`
         . . . . . . . . . . . . . . . . 
@@ -169,11 +147,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let projectile2: Sprite = null
 let Demon1: Sprite = null
-let projectile: Sprite = null
-let currentLevel = 0
+let Pannochka: Sprite = null
 let metPannochka = false
-let Pannochka2: Sprite = null
+let projectile: Sprite = null
 let mySprite: Sprite = null
+let currentLevel = 0
+currentLevel = 0
 scene.setBackgroundImage(img`
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
     cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -315,115 +294,7 @@ game.onUpdateInterval(randint(1000, 5000), function () {
             . . . . . . . b d b . . . . . . 
             . . . . . . . . b . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 50, 50)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 0, 50)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 50, 0)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 100, 0)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 0, 100)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 50, 100)
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, Pannochka2, 100, 50)
+            `, Pannochka, 50, 50)
     }
 })
 game.onUpdateInterval(1000, function () {
