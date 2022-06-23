@@ -434,7 +434,7 @@ function bossFight () {
         ...111....111...
         ................
         `, SpriteKind.Boss)
-    tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
+    tiles.placeOnTile(Pannochka, tiles.getTileLocation(5, 2))
     Pannochka.setStayInScreen(true)
     Ammo = statusbars.create(20, 6, StatusBarKind.Health)
     Ammo.attachToSprite(Pannochka, 5, 5)
@@ -604,9 +604,6 @@ let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 3
 LevelControl()
-game.onUpdateInterval(5000, function () {
-    Ammo.value += 1
-})
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
