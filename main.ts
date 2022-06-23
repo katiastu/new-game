@@ -141,17 +141,17 @@ function LevelControl () {
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc2ccccccccccccccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfcccccccccccccccccccccccccccccccccccccccccccccccccc22ccc2ccccc2cccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc2cccccc22ccc22cccc2ccccc2cccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc2ccc222cccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc2ccc2c2cccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc2ccccccc2ccccccccccccccccccccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfcccccccccccccccccccccccccccccccccccccccccc22cccccc22ccc2222cc2cccccccccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22ccccc22ccc22c2cc22cccc2cccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc22cc222cccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc22cc2c2cccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc222ccc2ccccc22cccc2ccc22ccccccccccccccccccccccccccccccccccc
             ccccccccccccccccccccccccccccccccccccccccccccccccccccccccffccffcccccccccccccccccccccccccccccccccccccccc22ccc2ccccc22cccc2ccc22ccccccccccccccccccccccccccccccccccc
             ccccccccccccccccccccccccccccccccccccccccccccccccccccccccfffffccccccccccccccccccccccccccccccccccccccccc22cc22ccccc22cccc2cc22cccccccccccccccccccccccccccccccccccc
-            ccccccccccccccccccccccccccccccccccccccccccccccccccccccccffffccccccccccccccccccccccccccccccccccccccccccc22c22ccccc22cccc22c22cccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccfffccccccccccccccccccccccccccccccccccccccccccccc2222cccccc22cccc22c22cccccccccccccccccccccccccccccccccccc
-            ccccccccccccccccccccccccccccccccccccccccccccccccccccccffffccccccccccccccccccccccccccccccccccccccccccccc2222cccccc22cccc22c2ccccccccccccccccccccccccccccccccccccc
+            ccccccccccccccccccccccccccccccccccccccccccccccccccccccccffffcccccccccccccccccccccccccccccccccccccccccc222c22ccccc22cccc22c22cccccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccfffcccccccccccccccccccccccccccccccccccccccccccc22222cccccc22cccc22c22cccccccccccccccccccccccccccccccccccc
+            ccccccccccccccccccccccccccccccccccccccccccccccccccccccffffcccccccccccccccccccccccccccccccccccccccccccc22222cccccc22cccc22c2ccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccfccffccccccccccccccccccccccccccccccccccccccccccccc2222cccccc22ccccc222ccccccccccccccccccccccccccccccccccccc
             ccccccccccccccccccccccccccccccccccccccccccccccccccccccccffccccccccccccccccccccccccccccccccccccccccccccc222ccccccc22cccccc22ccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccccc222ccccccc22cccccc2cccccccccccccccccccccccccccccccccccccc
@@ -257,62 +257,40 @@ function LevelControl () {
             ......ccccccccccc.........ccccccccccccccccccc.........................................................................f.........................................
             `)
         Play_Button = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 1 1 1 1 . 1 1 1 . . . 1 . . 1 
-            1 1 . 1 1 . 1 . 1 1 1 1 1 . . 1 
-            1 1 1 1 1 . 1 1 1 . 1 1 . . . 1 
-            1 1 . . 1 . 1 . 1 . . 1 . . . 1 
-            1 1 . . 1 1 1 . 1 . . 1 . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Button)
-        Help_Button = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . 1 . . 1 1 1 . 1 . . 1 1 1 1 
-            1 . 1 . 1 1 . . . 1 . . 1 . 1 1 
-            1 . 1 1 1 1 1 1 . 1 . . 1 1 1 1 
-            1 . 1 . 1 1 . . . 1 . . 1 . . 1 
-            1 . 1 . 1 1 1 1 . 1 1 . 1 . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 . . . . . . . . . . . . . . 1 
-            1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.Button)
-        Cursor = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 5 . . . . . . . . 
-            . . . . . . 5 e 5 . . . . . . . 
-            . . . . . . 5 e 5 . . . . . . . 
-            . . . . . 5 4 e 5 5 . . . . . . 
-            . . . 5 e e e e e e e 5 . . . . 
-            . . . . 5 5 5 e 5 5 4 . . . . . 
-            . . . . 2 4 5 e 5 4 2 . . . . . 
-            . . . . . . 5 e 5 . 2 . . . . . 
-            . . . . . 5 4 e 5 . . . . . . . 
-            . . . . . 4 5 e 5 4 . . . . . . 
-            . . . . . 4 5 e 5 4 . . . . . . 
-            . . . . 2 . 4 5 4 . . . . . . . 
-            . . . . . . 4 2 4 . 2 . . . . . 
-            . . . . . . . 2 . . . . . . . . 
-            `, SpriteKind.Cursor)
-        Play_Button.setPosition(44, 93)
-        Help_Button.setPosition(110, 93)
-        controller.moveSprite(Cursor)
+            ffffffffffffffffffffffffffffffff................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ...ffffffffffffffffffffffffffffffffffffffffffffffffffffff.......
+            ...ffffffffffffffffffffffffffffffffffffffffffffffffffffff.......
+            ...ffffff111111ff11fff11f11111ff11f11fffff222ffffffffffff.......
+            ...ffffff111ff1ff11fff11f11fffff11f11fffff222ffffffffffff.......
+            ...ffffff111ff1ff11fff11f11fffff11f11fffff222ffffffffffff.......
+            ...fffffff1111111111ff11f11111ff11111fffff22f22ffffffffff.......
+            ...fffffff11fffffff1ff11fffff1ff11f11fff2222f2222ffffffff.......
+            ...fffffff11fffffff1ff11fffff1ff11f11fff2222f2222ffffffff.......
+            ...fffffff11fffffff11111f11111ff11f11fff22fffff22ffffffff.......
+            ...fffffffffffffffffffffffffffffffffffff2222222222fffffff.......
+            ...fffffffffffffffffffffffffffffffffffff2222222222fffffff.......
+            ...fffffffffffffffffffffffffffffffffffff22fffffff2fffffff.......
+            ...ffffff11111111111ffff111111111111111122ff111ff211111ff.......
+            ...ffffff11111111111ffff111111111111111122ff111ff211111ff.......
+            ...fffffffff11f11ff1ffff111fffff11fff11111ff11111fff11fff.......
+            ...fffffffff11f11ff1ffff111fffff111ff11111ff111fffff11fff.......
+            ...fffffffff11f11ff1ffff111fffff111ff11111ff111fffff11fff.......
+            ...fffffffff11f11111fffffff111ffff1ff11f11ff111111ff11fff.......
+            ...fffffffffffffffffffff111111ffff1ff11f11ff1ffff1ff11fff.......
+            ...fffffffffffffffffffff111111ffff1ff11f11ff1ffff1ff11fff.......
+            ...ffffffffffffffffffffffffffffffffffffffffffffffffffffff.......
+            ...ffffffffffffffffffffffffffffffffffffffffffffffffffffff.......
+            ...ffffffffffffffffffffffffffffffffffffffffffffffffffffff.......
+            ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            `, SpriteKind.Player)
+        Play_Button.setPosition(75, 106)
     } else if (currentLevel == 1) {
         Level1()
     } else if (currentLevel == 2) {
@@ -505,15 +483,12 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
     	
     }
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Bread`, function (sprite, location) {
-    info.changeLifeBy(1)
-})
 info.onLifeZero(function () {
     game.over(false, color.Darken)
 })
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel == 0) {
-        Cursor.sayText("Choose mode and push \"A\" or Enter", 5000, false)
+    	
     } else {
         Shield = 0
         mySprite.setImage(img`
@@ -543,6 +518,9 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
         }
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+	
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
     mySprite.destroy()
     currentLevel += 1
@@ -552,13 +530,28 @@ statusbars.onZero(StatusBarKind.Energy, function (status) {
     NoEnegry()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (currentLevel == 3) {
-        projectile.setFlag(SpriteFlag.GhostThroughWalls, true)
-    }
     otherSprite.destroy()
     info.changeScoreBy(1)
     sprite.destroy(effects.fire, 500)
     otherSprite.destroy(effects.fire, 500)
+    Bread = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . e e e . . . . . 
+        . . . . . . e d d e e e . . . . 
+        . . . . . e e e d d e e . . . . 
+        . . . . d d e e e d e e . . . . 
+        . . . e e d d e e e e e . . . . 
+        . . . e e e d d e e e . . . . . 
+        . . . e e e e e e e . . . . . . 
+        . . . e e e e e e . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Food)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (Shield == 0) {
@@ -590,12 +583,13 @@ function NoEnegry () {
         ...................
         `)
 }
-let Demon1: Sprite = null
 let Boss_P_6: Sprite = null
 let Boss_P_4: Sprite = null
 let Boss_P_3: Sprite = null
 let Boss_projectile_2: Sprite = null
 let Boss_projectile_1: Sprite = null
+let Demon1: Sprite = null
+let Bread: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
@@ -603,12 +597,17 @@ let Ammo: StatusBarSprite = null
 let Energy_bar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shield = 0
-let Cursor: Sprite = null
-let Help_Button: Sprite = null
 let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 0
 LevelControl()
+game.onUpdateInterval(1000, function () {
+    if (currentLevel != 0) {
+        Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
+        Demon1.x = randint(5, 155)
+        Demon1.setKind(SpriteKind.Enemy)
+    }
+})
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 3) {
         Boss_projectile_1 = sprites.createProjectileFromSprite(img`
@@ -706,13 +705,6 @@ game.onUpdateInterval(1000, function () {
         Boss_P_3.setKind(SpriteKind.Enemy)
         Boss_P_4.setKind(SpriteKind.Enemy)
         Boss_P_6.setKind(SpriteKind.Enemy)
-    }
-})
-game.onUpdateInterval(1000, function () {
-    if (currentLevel != 0) {
-        Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
-        Demon1.x = randint(5, 155)
-        Demon1.setKind(SpriteKind.Enemy)
     }
 })
 forever(function () {
