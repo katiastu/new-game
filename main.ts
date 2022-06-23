@@ -402,7 +402,7 @@ function CreatePlayer () {
 function bossFight () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
     BossIsAlive = true
-    Pannochka = sprites.create(img`
+    Pannochka = sprites.createProjectileFromSide(img`
         .....5422242....
         .....5422242....
         ...522f22f25....
@@ -433,12 +433,16 @@ function bossFight () {
         ...111....111...
         ...111....111...
         ................
-        `, SpriteKind.Boss)
+        `, 50, 50)
     tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
     Ammo = statusbars.create(20, 6, StatusBarKind.Health)
     Ammo.attachToSprite(Pannochka, 5, 5)
     Ammo.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    while (BossIsAlive == true) {
+        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
+        Boss_projectile_1.setKind(SpriteKind.Enemy)
+    }
 }
 function Level2 () {
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -591,8 +595,8 @@ function NoEnegry () {
         `)
 }
 let Demon1: Sprite = null
-let Boss_projectile_1: Sprite = null
 let projectile: Sprite = null
+let Boss_projectile_1: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
 let Ammo: StatusBarSprite = null
@@ -605,17 +609,18 @@ let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 3
 LevelControl()
-game.onUpdateInterval(2000, function () {
-    if (currentLevel == 3) {
-        pause(5000)
-        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
-        mySprite.setKind(SpriteKind.Enemy)
-    }
+game.onUpdateInterval(5000, function () {
+    Ammo.value += 1
 })
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
+    }
+})
+forever(function () {
+    if (currentLevel != 0) {
+    	
     }
 })
