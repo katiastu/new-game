@@ -433,10 +433,8 @@ function bossFight () {
         `, SpriteKind.Boss)
     tiles.placeOnTile(Pannochka, tiles.getTileLocation(5, 2))
     Pannochka.setStayInScreen(true)
-    BossHP = statusbars.create(20, 6, StatusBarKind.Health)
+    BossHP = statusbars.create(30, 6, StatusBarKind.Health)
     BossHP.attachToSprite(Pannochka, 5, 5)
-    BossHP.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    BossHP.value = 30
 }
 function Level2 () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
