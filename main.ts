@@ -142,8 +142,8 @@ function LevelControl () {
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc2ccccccc2ccccccccccccccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfcccccccccccccccccccccccccccccccccccccccccc22cccccc22ccc2222cc2cccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22ccccc22ccc22c2cc22cccc2cccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfcccccccccccccccccccccccccccccccccccccccccc22cccccc22ccc22cccc2cccccccccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22ccccc22ccc22cccc22cccc2cccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc22cc222cccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc22cccc22cccc22cccc22cc2c2cccccccccccccccccccccccccccccccccc
             cccccccccccccccccccccccccccccccccccccccccccccccccccccccccfccccccccccccccccccccccccccccccccccccccccccc222ccc2ccccc22cccc2ccc22ccccccccccccccccccccccccccccccccccc
@@ -363,7 +363,7 @@ function CreatePlayer () {
         ...................
         ...................
         `, SpriteKind.Player)
-    tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
+    tiles.placeOnRandomTile(mySprite, assets.tile`myTile3`)
     controller.moveSprite(mySprite, 100, 100)
     mySprite.setStayInScreen(true)
     info.setLife(5)
