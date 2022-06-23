@@ -605,7 +605,7 @@ let currentLevel = 0
 currentLevel = 3
 LevelControl()
 game.onUpdateInterval(1000, function () {
-    if (currentLevel == 1 || currentLevel == 2) {
+    if (currentLevel != 0) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
