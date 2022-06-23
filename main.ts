@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Button = SpriteKind.create()
     export const Cursor = SpriteKind.create()
     export const Picture = SpriteKind.create()
+    export const Boss = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const Ammunition = StatusBarKind.create()
@@ -358,9 +359,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function CreatePlayer () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-    statusbar_2 = statusbars.create(20, 6, StatusBarKind.Ammunition)
+    Boss_Health = statusbars.create(20, 6, StatusBarKind.Ammunition)
     statusbar = statusbars.create(20, 6, StatusBarKind.Energy)
-    statusbar_2.positionDirection(CollisionDirection.Top)
+    Boss_Health.positionDirection(CollisionDirection.Top)
     statusbar.positionDirection(CollisionDirection.Top)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
@@ -399,6 +400,7 @@ function CreatePlayer () {
     }
 }
 function bossFight () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
     BossIsAlive = true
     Pannochka = sprites.create(img`
         .....542242.....
@@ -421,9 +423,12 @@ function bossFight () {
         .....1...1......
         .....1...1......
         ...111...111....
-        `, SpriteKind.Enemy)
+        `, SpriteKind.Boss)
     tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
+    Boss_Health = statusbars.create(20, 6, StatusBarKind.Health)
+    Boss_Health.attachToSprite(Pannochka)
+    Boss_Health.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
 }
 function Level2 () {
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -450,7 +455,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . 2 . . . . . . . . 
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
-        statusbar_2.value += -10
+        Boss_Health.value += -10
     } else {
     	
     }
@@ -459,6 +464,11 @@ function Level3 () {
     tiles.setCurrentTilemap(tilemap`level3`)
     CreatePlayer()
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, otherSprite) {
+    Boss_Health.value += -1
+    Pannochka.startEffect(effects.ashes, 2000)
+    scene.cameraShake(4, 500)
+})
 sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Button, function (sprite, otherSprite) {
     if (otherSprite == Play_Button && controller.A.isPressed()) {
         currentLevel = 1
@@ -469,15 +479,27 @@ function Level1 () {
     tiles.setCurrentTilemap(tilemap`level1`)
     CreatePlayer()
 }
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    Pannochka.destroy(effects.fire, 500)
+    music.baDing.play()
+    pause(2000)
+    game.over(true, color.Darken)
+})
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel != 0) {
         for (let index = 0; index < 2; index++) {
-            statusbar_2.value += 3
+            Boss_Health.value += 3
             pause(100)
         }
     } else {
     	
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Bread`, function (sprite, location) {
+    info.changeLifeBy(1)
+})
+info.onLifeZero(function () {
+    game.over(false, color.Darken)
 })
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel == 0) {
@@ -558,12 +580,11 @@ function NoEnegry () {
         ...................
         `)
 }
-let Boss_projectile_1: Sprite = null
 let Demon1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
-let statusbar_2: StatusBarSprite = null
+let Boss_Health: StatusBarSprite = null
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shield = 0
@@ -571,7 +592,7 @@ let Cursor: Sprite = null
 let Help_Button: Sprite = null
 let Play_Button: Sprite = null
 let currentLevel = 0
-currentLevel = 0
+currentLevel = 3
 LevelControl()
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
@@ -581,9 +602,5 @@ game.onUpdateInterval(1000, function () {
     }
 })
 game.onUpdateInterval(500, function () {
-    if (currentLevel == 3) {
-        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
-        Boss_projectile_1.x = randint(5, 155)
-        mySprite.setKind(SpriteKind.Enemy)
-    }
+	
 })
