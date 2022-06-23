@@ -293,20 +293,20 @@ function LevelControl () {
         Cursor = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            . . . . 1 1 1 1 1 1 1 . . . . . 
-            . . . 1 1 1 1 1 1 1 1 1 . . . . 
-            . . 1 1 . . . . . . . 1 1 . . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . 1 1 . . . . . . . . . 1 1 . . 
-            . . 1 1 . . . . . . . 1 1 . . . 
-            . . . 1 1 1 1 1 1 1 1 1 . . . . 
-            . . . . 1 1 1 1 1 1 1 . . . . . 
-            . . . . . . . . . . . . . . . . 
+            . . . . . . . 5 . . . . . . . . 
+            . . . . . . 5 e 5 . . . . . . . 
+            . . . . . . 5 e 5 . . . . . . . 
+            . . . . . 5 4 e 5 5 . . . . . . 
+            . . . 5 e e e e e e e 5 . . . . 
+            . . . . 5 5 5 e 5 5 4 . . . . . 
+            . . . . 2 4 5 e 5 4 2 . . . . . 
+            . . . . . . 5 e 5 . 2 . . . . . 
+            . . . . . 5 4 e 5 . . . . . . . 
+            . . . . . 4 5 e 5 4 . . . . . . 
+            . . . . . 4 5 e 5 4 . . . . . . 
+            . . . . 2 . 4 5 4 . . . . . . . 
+            . . . . . . 4 2 4 . 2 . . . . . 
+            . . . . . . . 2 . . . . . . . . 
             `, SpriteKind.Cursor)
         Play_Button.setPosition(140, 101)
         controller.moveSprite(Cursor)
@@ -433,11 +433,13 @@ function bossFight () {
         `, SpriteKind.Boss)
     tiles.placeOnTile(Pannochka, tiles.getTileLocation(5, 2))
     Pannochka.setStayInScreen(true)
-    Ammo = statusbars.create(20, 6, StatusBarKind.Health)
-    Ammo.attachToSprite(Pannochka, 5, 5)
-    Ammo.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    BossHP = statusbars.create(20, 6, StatusBarKind.Health)
+    BossHP.attachToSprite(Pannochka, 5, 5)
+    BossHP.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    BossHP.value = 30
 }
 function Level2 () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
     tiles.setCurrentTilemap(tilemap`level2`)
     CreatePlayer()
 }
@@ -468,11 +470,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function Level3 () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
     tiles.setCurrentTilemap(tilemap`level3`)
     CreatePlayer()
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, otherSprite) {
-    Ammo.value += -1
+    BossHP.value += -1
     Pannochka.startEffect(effects.fire, 2000)
     scene.cameraShake(4, 500)
 })
@@ -483,6 +486,7 @@ sprites.onOverlap(SpriteKind.Cursor, SpriteKind.Button, function (sprite, otherS
     }
 })
 function Level1 () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
     tiles.setCurrentTilemap(tilemap`level1`)
     CreatePlayer()
 }
@@ -501,6 +505,11 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
     } else {
     	
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
+    mySprite.destroy()
+    currentLevel += 1
+    LevelControl()
 })
 info.onLifeZero(function () {
     game.over(false, color.Darken)
@@ -539,11 +548,6 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
 	
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
-    mySprite.destroy()
-    currentLevel += 1
-    LevelControl()
 })
 statusbars.onZero(StatusBarKind.Energy, function (status) {
     NoEnegry()
@@ -589,6 +593,7 @@ let Boss_projectile_2: Sprite = null
 let Boss_projectile_1: Sprite = null
 let Demon1: Sprite = null
 let projectile: Sprite = null
+let BossHP: StatusBarSprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
 let Ammo: StatusBarSprite = null
