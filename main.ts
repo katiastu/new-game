@@ -321,28 +321,35 @@ function LevelControl () {
     	
     }
 }
+function Shield_ON () {
+	
+}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (currentLevel == 0) {
     	
     } else {
+        info.startCountdown(4)
         Shield = 1
         mySprite.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . 5 5 5 5 . . . . . . 
-            . . . . 5 5 5 5 5 5 5 . . . . . 
-            . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-            . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-            . . . d d d d d d d d d d . . . 
-            . . . d 5 5 d d d d 5 5 d . . . 
-            . . e d 6 6 d d d d 6 6 d d . . 
-            . . e 3 3 d 5 5 5 5 d 3 3 . . . 
-            e e e e e 5 d d d d 5 d . . . . 
-            . . e 1 1 1 1 2 2 1 1 1 1 . . . 
-            . . e 1 1 1 1 2 2 1 1 1 1 1 . . 
-            . . e b . 1 1 1 1 1 1 . b d . . 
-            . . e . . f f f f f f . . . . . 
-            . . . . 1 f f . . f f . . . . . 
+            .....111111111.....
+            ...11.........11...
+            ..1.....5555....1..
+            .1....5555555....1.
+            .1...5555555555..1.
+            1...555555555555..1
+            1....dddddddddd...1
+            1....d55dddd55d...1
+            1...ed66dddd66dd..1
+            1...e33d5555d33...1
+            1.eeeee5dddd5d....1
+            1...e1111221111...1
+            1...e11112211111..1
+            1...eb.111111.bd..1
+            .1..e..ffffff....1.
+            .1....1ff..ff....1.
+            ..1.............1..
+            ...11.........11...
+            .....111111111.....
             `)
         for (let index = 0; index < 5; index++) {
             statusbar.value += -1
@@ -351,25 +358,29 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function CreatePlayer () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-    statusbar = statusbars.create(20, 4, StatusBarKind.Energy)
+    statusbar = statusbars.create(20, 6, StatusBarKind.Energy)
+    statusbar.positionDirection(CollisionDirection.Top)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . 5 5 5 5 5 5 5 . . . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-        . . . d d d d d d d d d d . . . 
-        . . . d 5 5 d d d d 5 5 d . . . 
-        . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
-        . . . . d 5 d d d d 5 d . . . . 
-        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
-        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
-        . . d b . 1 1 1 1 1 1 . b d . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
+        ...................
+        ...................
+        ........5555.......
+        ......5555555......
+        .....5555555555....
+        ....555555555555...
+        .....dddddddddd....
+        .....d55dddd55d....
+        ....dd66dddd66dd...
+        .....33d5555d33....
+        ......d5dddd5d.....
+        .....1111221111....
+        ....111112211111...
+        ....db.111111.bd...
+        .......ffffff......
+        .......ff..ff......
+        ...................
+        ...................
+        ...................
         `, SpriteKind.Player)
     tiles.placeOnRandomTile(mySprite, sprites.castle.rock0)
     controller.moveSprite(mySprite, 100, 100)
@@ -431,28 +442,56 @@ function Level1 () {
     tiles.setCurrentTilemap(tilemap`level1`)
     CreatePlayer()
 }
+info.onCountdownEnd(function () {
+    Shield = 0
+    mySprite.setImage(img`
+        ...................
+        ...................
+        ........5555.......
+        ......5555555......
+        .....5555555555....
+        ....555555555555...
+        .....dddddddddd....
+        .....d55dddd55d....
+        ....dd66dddd66dd...
+        .....33d5555d33....
+        ......d5dddd5d.....
+        .....1111221111....
+        ....111112211111...
+        ....db.111111.bd...
+        .......ffffff......
+        .......ff..ff......
+        ...................
+        ...................
+        ...................
+        `)
+    info.stopCountdown()
+})
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel == 0) {
         Cursor.sayText("Choose mode and push \"A\" or Enter", 5000, false)
     } else {
         Shield = 0
         mySprite.setImage(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . 5 5 5 5 . . . . . . 
-            . . . . 5 5 5 5 5 5 5 . . . . . 
-            . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-            . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-            . . . d d d d d d d d d d . . . 
-            . . . d 5 5 d d d d 5 5 d . . . 
-            . . d d 6 6 d d d d 6 6 d d . . 
-            . . . 3 3 d 5 5 5 5 d 3 3 . . . 
-            . . . . d 5 d d d d 5 d . . . . 
-            . . . 1 1 1 1 2 2 1 1 1 1 . . . 
-            . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
-            . . d b . 1 1 1 1 1 1 . b d . . 
-            . . . . . f f f f f f . . . . . 
-            . . . . . f f . . f f . . . . . 
+            ...................
+            ...................
+            ........5555.......
+            ......5555555......
+            .....5555555555....
+            ....555555555555...
+            .....dddddddddd....
+            .....d55dddd55d....
+            ....dd66dddd66dd...
+            .....33d5555d33....
+            ......d5dddd5d.....
+            .....1111221111....
+            ....111112211111...
+            ....db.111111.bd...
+            .......ffffff......
+            .......ff..ff......
+            ...................
+            ...................
+            ...................
             `)
     }
 })
@@ -480,25 +519,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     }
 })
 function NoEnegry () {
-    Shield = 0
-    mySprite.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . 5 5 5 5 5 5 5 . . . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-        . . . d d d d d d d d d d . . . 
-        . . . d 5 5 d d d d 5 5 d . . . 
-        . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
-        . . . . d 5 d d d d 5 d . . . . 
-        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
-        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
-        . . d b . 1 1 1 1 1 1 . b d . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `)
+	
 }
 let Demon1: Sprite = null
 let projectile2: Sprite = null
@@ -527,5 +548,5 @@ game.onUpdateInterval(1000, function () {
     }
 })
 forever(function () {
-    music.playMelody("C5 B - G F E D C ", 120)
+	
 })
