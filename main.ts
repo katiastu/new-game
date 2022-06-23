@@ -607,7 +607,7 @@ let Cursor: Sprite = null
 let Help_Button: Sprite = null
 let Play_Button: Sprite = null
 let currentLevel = 0
-currentLevel = 3
+currentLevel = 0
 LevelControl()
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 3) {
