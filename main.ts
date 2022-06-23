@@ -591,6 +591,11 @@ function NoEnegry () {
         `)
 }
 let Demon1: Sprite = null
+let Boss_P_6: Sprite = null
+let Boss_P_4: Sprite = null
+let Boss_P_3: Sprite = null
+let Boss_projectile_2: Sprite = null
+let Boss_projectile_1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
@@ -604,6 +609,105 @@ let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 3
 LevelControl()
+game.onUpdateInterval(1000, function () {
+    if (currentLevel == 3) {
+        Boss_projectile_1 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Pannochka, 0, 100)
+        Boss_projectile_2 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Pannochka, 50, 100)
+        Boss_P_3 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Pannochka, 100, 50)
+        Boss_P_4 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Pannochka, -50, 100)
+        Boss_P_6 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . 2 1 1 1 1 2 . . . . . 
+            . . . . . . 3 1 1 3 . . . . . . 
+            . . . . . . . 2 2 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, Pannochka, -100, 50)
+        Boss_projectile_1.setKind(SpriteKind.Enemy)
+        Boss_projectile_2.setKind(SpriteKind.Enemy)
+        Boss_P_3.setKind(SpriteKind.Enemy)
+        Boss_P_4.setKind(SpriteKind.Enemy)
+        Boss_P_6.setKind(SpriteKind.Enemy)
+    }
+})
 game.onUpdateInterval(1000, function () {
     if (currentLevel != 0) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
