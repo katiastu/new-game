@@ -558,6 +558,7 @@ function NoEnegry () {
         ...................
         `)
 }
+let Boss_projectile_1: Sprite = null
 let Demon1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
@@ -577,5 +578,12 @@ game.onUpdateInterval(1000, function () {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (currentLevel == 3) {
+        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
+        Boss_projectile_1.x = randint(5, 155)
+        mySprite.setKind(SpriteKind.Enemy)
     }
 })
