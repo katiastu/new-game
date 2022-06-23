@@ -394,6 +394,7 @@ function CreatePlayer () {
     }
 }
 function bossFight () {
+    BossIsAlive = true
     Pannochka = sprites.create(img`
         .....542242.....
         ...522f2f25.....
@@ -416,9 +417,15 @@ function bossFight () {
         .....1...1......
         ...111...111....
         `, SpriteKind.Enemy)
+    tiles.placeOnRandomTile(mySprite, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
-    for (let index = 0; index < randint(1, 10); index++) {
-    	
+    while (BossIsAlive) {
+        for (let index = 0; index < randint(1, 10); index++) {
+            mySprite.setVelocity(100, 0)
+        }
+        for (let index = 0; index < randint(1, 10); index++) {
+            mySprite.setVelocity(-100, 0)
+        }
     }
 }
 function Level2 () {
@@ -506,7 +513,7 @@ statusbars.onZero(StatusBarKind.Energy, function (status) {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (currentLevel == 3) {
-        mySprite.setFlag(SpriteFlag.GhostThroughWalls, true)
+        projectile.setFlag(SpriteFlag.GhostThroughWalls, true)
     }
     otherSprite.destroy()
     info.changeScoreBy(1)
@@ -547,6 +554,7 @@ let Demon1: Sprite = null
 let projectile2: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
+let BossIsAlive = false
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shield = 0
@@ -568,7 +576,4 @@ game.onUpdateInterval(1000, function () {
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
     }
-})
-forever(function () {
-	
 })
