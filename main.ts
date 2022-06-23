@@ -402,7 +402,7 @@ function CreatePlayer () {
 function bossFight () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
     BossIsAlive = true
-    Pannochka = sprites.createProjectileFromSide(img`
+    Pannochka = sprites.create(img`
         .....5422242....
         .....5422242....
         ...522f22f25....
@@ -433,16 +433,12 @@ function bossFight () {
         ...111....111...
         ...111....111...
         ................
-        `, 50, 50)
+        `, SpriteKind.Boss)
     tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
     Ammo = statusbars.create(20, 6, StatusBarKind.Health)
     Ammo.attachToSprite(Pannochka, 5, 5)
     Ammo.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    while (BossIsAlive == true) {
-        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
-        Boss_projectile_1.setKind(SpriteKind.Enemy)
-    }
 }
 function Level2 () {
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -596,7 +592,6 @@ function NoEnegry () {
 }
 let Demon1: Sprite = null
 let projectile: Sprite = null
-let Boss_projectile_1: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
 let Ammo: StatusBarSprite = null
