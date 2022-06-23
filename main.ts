@@ -421,10 +421,10 @@ function bossFight () {
     Pannochka.setStayInScreen(true)
     while (BossIsAlive) {
         for (let index = 0; index < randint(1, 10); index++) {
-            mySprite.setVelocity(100, 0)
+            Pannochka.setVelocity(100, 0)
         }
         for (let index = 0; index < randint(1, 10); index++) {
-            mySprite.setVelocity(-100, 0)
+            Pannochka.setVelocity(-100, 0)
         }
     }
 }
@@ -551,7 +551,6 @@ function NoEnegry () {
         `)
 }
 let Demon1: Sprite = null
-let projectile2: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
@@ -564,12 +563,6 @@ let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 0
 LevelControl()
-game.onUpdateInterval(randint(1000, 5000), function () {
-    let metPannochka = false
-    if (metPannochka == true) {
-        projectile2 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 50, 50)
-    }
-})
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
