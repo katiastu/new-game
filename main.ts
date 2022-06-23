@@ -3,6 +3,9 @@ namespace SpriteKind {
     export const Cursor = SpriteKind.create()
     export const Picture = SpriteKind.create()
 }
+namespace StatusBarKind {
+    export const Ammunition = StatusBarKind.create()
+}
 function LevelControl () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
@@ -355,7 +358,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function CreatePlayer () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
+    statusbar_2 = statusbars.create(20, 6, StatusBarKind.Ammunition)
     statusbar = statusbars.create(20, 6, StatusBarKind.Energy)
+    statusbar_2.positionDirection(CollisionDirection.Top)
     statusbar.positionDirection(CollisionDirection.Top)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
@@ -417,7 +422,7 @@ function bossFight () {
         .....1...1......
         ...111...111....
         `, SpriteKind.Enemy)
-    tiles.placeOnRandomTile(mySprite, assets.tile`myTile2`)
+    tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
 }
 function Level2 () {
@@ -445,6 +450,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . 2 . . . . . . . . 
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
+        statusbar_2.value += -10
     } else {
     	
     }
@@ -463,6 +469,16 @@ function Level1 () {
     tiles.setCurrentTilemap(tilemap`level1`)
     CreatePlayer()
 }
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    if (currentLevel != 0) {
+        for (let index = 0; index < 2; index++) {
+            statusbar_2.value += 3
+            pause(100)
+        }
+    } else {
+    	
+    }
+})
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel == 0) {
         Cursor.sayText("Choose mode and push \"A\" or Enter", 5000, false)
@@ -490,7 +506,7 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
             ...................
             `)
         while (Shield == 0) {
-            statusbar.value += 3
+            statusbar.value += 1
             pause(100)
         }
     }
@@ -546,6 +562,7 @@ let Demon1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
+let statusbar_2: StatusBarSprite = null
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shield = 0
