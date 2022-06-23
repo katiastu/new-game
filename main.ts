@@ -419,14 +419,6 @@ function bossFight () {
         `, SpriteKind.Enemy)
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
-    while (BossIsAlive) {
-        for (let index = 0; index < randint(1, 10); index++) {
-            Pannochka.setVelocity(100, 0)
-        }
-        for (let index = 0; index < randint(1, 10); index++) {
-            Pannochka.setVelocity(-100, 0)
-        }
-    }
 }
 function Level2 () {
     tiles.setCurrentTilemap(tilemap`level2`)
