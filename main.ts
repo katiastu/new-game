@@ -352,17 +352,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
             .....111111111.....
             `)
         while (Shield == 1) {
-            statusbar.value += -3
+            Energy_bar.value += -3
             pause(100)
         }
     }
 })
 function CreatePlayer () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-    Boss_Health = statusbars.create(20, 6, StatusBarKind.Ammunition)
-    statusbar = statusbars.create(20, 6, StatusBarKind.Energy)
-    Boss_Health.positionDirection(CollisionDirection.Top)
-    statusbar.positionDirection(CollisionDirection.Top)
+    Ammo = statusbars.create(0, 0, StatusBarKind.Ammunition)
+    Energy_bar = statusbars.create(80, 3, StatusBarKind.Energy)
+    Ammo.positionDirection(CollisionDirection.Bottom)
+    Energy_bar.positionDirection(CollisionDirection.Bottom)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     mySprite = sprites.create(img`
         ...................
@@ -436,9 +436,9 @@ function bossFight () {
         `, SpriteKind.Boss)
     tiles.placeOnRandomTile(Pannochka, assets.tile`myTile2`)
     Pannochka.setStayInScreen(true)
-    Boss_Health = statusbars.create(20, 6, StatusBarKind.Health)
-    Boss_Health.attachToSprite(Pannochka, 5, 5)
-    Boss_Health.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    Ammo = statusbars.create(20, 6, StatusBarKind.Health)
+    Ammo.attachToSprite(Pannochka, 5, 5)
+    Ammo.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
 }
 function Level2 () {
     tiles.setCurrentTilemap(tilemap`level2`)
@@ -465,7 +465,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . . 2 . . . . . . . . 
             `, mySprite, 0, -100)
         projectile.startEffect(effects.warmRadial)
-        Boss_Health.value += -10
+        Ammo.value += -10
     } else {
     	
     }
@@ -475,7 +475,7 @@ function Level3 () {
     CreatePlayer()
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Boss, function (sprite, otherSprite) {
-    Boss_Health.value += -1
+    Ammo.value += -1
     Pannochka.startEffect(effects.fire, 2000)
     scene.cameraShake(4, 500)
 })
@@ -498,7 +498,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     if (currentLevel != 0) {
         for (let index = 0; index < 2; index++) {
-            Boss_Health.value += 3
+            Ammo.value += 3
             pause(100)
         }
     } else {
@@ -538,7 +538,7 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
             ...................
             `)
         while (Shield == 0) {
-            statusbar.value += 1
+            Energy_bar.value += 1
             pause(100)
         }
     }
@@ -594,8 +594,8 @@ let Demon1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
-let Boss_Health: StatusBarSprite = null
-let statusbar: StatusBarSprite = null
+let Ammo: StatusBarSprite = null
+let Energy_bar: StatusBarSprite = null
 let mySprite: Sprite = null
 let Shield = 0
 let Cursor: Sprite = null
