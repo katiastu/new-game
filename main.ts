@@ -591,6 +591,7 @@ function NoEnegry () {
         `)
 }
 let Demon1: Sprite = null
+let Boss_projectile_1: Sprite = null
 let projectile: Sprite = null
 let Pannochka: Sprite = null
 let BossIsAlive = false
@@ -604,13 +605,17 @@ let Play_Button: Sprite = null
 let currentLevel = 0
 currentLevel = 3
 LevelControl()
+game.onUpdateInterval(2000, function () {
+    if (currentLevel == 3) {
+        pause(5000)
+        Boss_projectile_1 = sprites.createProjectileFromSprite(assets.image`Chort`, Pannochka, 0, 100)
+        mySprite.setKind(SpriteKind.Enemy)
+    }
+})
 game.onUpdateInterval(1000, function () {
     if (currentLevel == 1 || currentLevel == 2) {
         Demon1 = sprites.createProjectileFromSide(assets.image`Chort`, 0, 100)
         Demon1.x = randint(5, 155)
         Demon1.setKind(SpriteKind.Enemy)
     }
-})
-game.onUpdateInterval(500, function () {
-	
 })
