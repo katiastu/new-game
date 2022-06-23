@@ -322,27 +322,31 @@ function LevelControl () {
     }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    Shiel = 1
-    mySprite.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . 5 5 5 5 5 5 5 . . . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-        . . . d d d d d d d d d d . . . 
-        . . . d 5 5 d d d d 5 5 d . . . 
-        . . e d 6 6 d d d d 6 6 d d . . 
-        . . e 3 3 d 5 5 5 5 d 3 3 . . . 
-        e e e e e 5 d d d d 5 d . . . . 
-        . . e 1 1 1 1 2 2 1 1 1 1 . . . 
-        . . e 1 1 1 1 2 2 1 1 1 1 1 . . 
-        . . e b . 1 1 1 1 1 1 . b d . . 
-        . . e . . f f f f f f . . . . . 
-        . . . . 1 f f . . f f . . . . . 
-        `)
-    for (let index = 0; index < 5; index++) {
-        statusbar.value += -1
+    if (currentLevel == 0) {
+    	
+    } else {
+        Shield = 1
+        mySprite.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 5 5 5 5 . . . . . . 
+            . . . . 5 5 5 5 5 5 5 . . . . . 
+            . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+            . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+            . . . d d d d d d d d d d . . . 
+            . . . d 5 5 d d d d 5 5 d . . . 
+            . . e d 6 6 d d d d 6 6 d d . . 
+            . . e 3 3 d 5 5 5 5 d 3 3 . . . 
+            e e e e e 5 d d d d 5 d . . . . 
+            . . e 1 1 1 1 2 2 1 1 1 1 . . . 
+            . . e 1 1 1 1 2 2 1 1 1 1 1 . . 
+            . . e b . 1 1 1 1 1 1 . b d . . 
+            . . e . . f f f f f f . . . . . 
+            . . . . 1 f f . . f f . . . . . 
+            `)
+        for (let index = 0; index < 5; index++) {
+            statusbar.value += -1
+        }
     }
 })
 function CreatePlayer () {
@@ -428,25 +432,29 @@ function Level1 () {
     CreatePlayer()
 }
 controller.B.onEvent(ControllerButtonEvent.Released, function () {
-    Shiel = 0
-    mySprite.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . 5 5 5 5 5 5 5 . . . . . 
-        . . . 5 5 5 5 5 5 5 5 5 5 . . . 
-        . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
-        . . . d d d d d d d d d d . . . 
-        . . . d 5 5 d d d d 5 5 d . . . 
-        . . d d 6 6 d d d d 6 6 d d . . 
-        . . . 3 3 d 5 5 5 5 d 3 3 . . . 
-        . . . . d 5 d d d d 5 d . . . . 
-        . . . 1 1 1 1 2 2 1 1 1 1 . . . 
-        . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
-        . . d b . 1 1 1 1 1 1 . b d . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . . f f . . f f . . . . . 
-        `)
+    if (currentLevel == 0) {
+        Cursor.sayText("Choose mode and push \"A\" or Enter", 5000, false)
+    } else {
+        Shield = 0
+        mySprite.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 5 5 5 5 . . . . . . 
+            . . . . 5 5 5 5 5 5 5 . . . . . 
+            . . . 5 5 5 5 5 5 5 5 5 5 . . . 
+            . . 5 5 5 5 5 5 5 5 5 5 5 5 . . 
+            . . . d d d d d d d d d d . . . 
+            . . . d 5 5 d d d d 5 5 d . . . 
+            . . d d 6 6 d d d d 6 6 d d . . 
+            . . . 3 3 d 5 5 5 5 d 3 3 . . . 
+            . . . . d 5 d d d d 5 d . . . . 
+            . . . 1 1 1 1 2 2 1 1 1 1 . . . 
+            . . 1 1 1 1 1 2 2 1 1 1 1 1 . . 
+            . . d b . 1 1 1 1 1 1 . b d . . 
+            . . . . . f f f f f f . . . . . 
+            . . . . . f f . . f f . . . . . 
+            `)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.saplingOak, function (sprite, location) {
     mySprite.destroy()
@@ -466,13 +474,13 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     otherSprite.destroy(effects.fire, 500)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (Shiel == 0) {
+    if (Shield == 0) {
         info.changeLifeBy(-1)
         otherSprite.destroy(effects.ashes, 500)
     }
 })
 function NoEnegry () {
-    Shiel = 0
+    Shield = 0
     mySprite.setImage(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -498,7 +506,7 @@ let metPannochka = false
 let projectile: Sprite = null
 let statusbar: StatusBarSprite = null
 let mySprite: Sprite = null
-let Shiel = 0
+let Shield = 0
 let Cursor: Sprite = null
 let Help_Button: Sprite = null
 let Play_Button: Sprite = null
